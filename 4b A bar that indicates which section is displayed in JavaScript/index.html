@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <title>Scrolling effect in JS</title>
+ <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
+
+
+  .section1 {
+   background-color: rgb(32, 139, 143);
+   height: 70vh;
+  }
+
+  .section2 {
+   background-color: rgb(10, 34, 10);
+   height: 500px;
+
+  }
+
+  .section3 {
+   background-color: rgb(167, 46, 106);
+   height: 1190px;
+  }
+
+  .section4 {
+   background-color: rgb(102, 43, 28);
+   height: 150vh;
+  }
+
+  .info {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   height: 70px;
+   width: 100%;
+   box-shadow: 0 0 3px 3px grey;
+   background-color: rgb(200, 200, 200);
+   font-size: 30px;
+   line-height: 70px;
+   text-align: center;
+   text-transform: uppercase;
+  }
+ </style>
+</head>
+
+<body>
+
+ <section class="section1"></section>
+ <section class="section2"></section>
+ <section class="section3"></section>
+ <section class="section4"></section>
+ <div class="info">WELCOME ON THE PAGE</div>
+
+
+ <script>
+  const txt = document.querySelector('div.info');
+
+  function changeText() {
+   // console.log("It works")
+   const scrollSize = window.scrollY;
+   // console.log(scrollSize);
+
+   const sectionHeight1 = document.querySelector('.section1').clientHeight;
+   const sectionHeight2 = document.querySelector('.section2').clientHeight;
+   const sectionHeight3 = document.querySelector('.section3').clientHeight;
+   const sectionHeight4 = document.querySelector('.section4').clientHeight;
+   // console.log(wysokoscSekcji3);
+
+   const beginningOfsection1 = document.querySelector('.section1').offsetTop
+   const beginningOfsection2 = document.querySelector('.section2').offsetTop
+   const beginningOfsection3 = document.querySelector('.section3').offsetTop
+   const BeginningOfsection4 = document.querySelector('.section4').offsetTop
+
+   if (scrollSize < sectionHeight1) {
+    txt.textContent = "section 1"
+   } else if (scrollSize < sectionHeight2 + beginningOfsection2) {
+    txt.textContent = "section 2"
+   } else if (scrollSize < sectionHeight3 + beginningOfsection3) {
+    txt.textContent = "section 3"
+   } else {
+    txt.textContent = "section 4"
+   }
+  }
+  window.addEventListener('scroll', changeText)
+ </script>
+</body>
+
+</html>
